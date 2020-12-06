@@ -1,5 +1,8 @@
 package jwtMultipleUserTest.demo.config;
 
+import jwtMultipleUserTest.demo.security.CustomCustomersDetailService;
+import jwtMultipleUserTest.demo.security.JwtAuthenticationEntryPoint;
+import jwtMultipleUserTest.demo.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +29,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    CustomUserDetailsService customUserDetailsService;// kelas dari package payload
+    CustomCustomersDetailService customCustomersDetailService;// kelas dari package payload
 
     @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;// kelas dari package payload
@@ -40,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
-                .userDetailsService(customUserDetailsService)
+                .userDetailsService(customCustomersDetailService)
                 .passwordEncoder(passwordEncoder());
     }
 

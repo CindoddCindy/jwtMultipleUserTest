@@ -1,5 +1,7 @@
 package jwtMultipleUserTest.demo.payload;
 
+import java.util.Set;
+
 public class SignUpRequest {
 
     @NotBlank
@@ -22,6 +24,23 @@ public class SignUpRequest {
     @Size(min = 3, max = 50)
     private String passwordCustomers;
 
+    private Set<String> role;
+
+    public SignUpRequest(String nameCustomers, String emailCustomers, String phoneCustomers, String passwordCustomers, Set<String> role) {
+        this.nameCustomers = nameCustomers;
+        this.emailCustomers = emailCustomers;
+        this.phoneCustomers = phoneCustomers;
+        this.passwordCustomers = passwordCustomers;
+        this.role = role;
+    }
+
+    public Set<String> getRole() {
+        return role;
+    }
+
+    public void setRole(Set<String> role) {
+        this.role = role;
+    }
 
     public String getNameCustomers() {
         return nameCustomers;
